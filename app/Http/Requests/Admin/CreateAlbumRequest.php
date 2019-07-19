@@ -26,7 +26,7 @@ class CreateAlbumRequest extends FormRequest
         return [
             'studio_id' => 'required|exists:users,id',
             'remark' => 'required',
-            'thumb_image' => 'required|mimes:jpg,jpeg,png',
+            'thumb_image' => 'nullable|mimes:jpg,jpeg,png',
             'album_url' => 'required|url',
             'pin' => 'required',
             'mobile' => 'required',

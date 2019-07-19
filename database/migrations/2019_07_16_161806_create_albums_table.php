@@ -17,7 +17,7 @@ class CreateAlbumsTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('user_id');
             $table->string('remark');
-            $table->string('thumb_image');
+            $table->string('thumb_image')->nullable();
             $table->string('album_url');
             $table->string('pin');
             $table->string('mobile');
