@@ -16,7 +16,7 @@ class AlbumController extends BaseApiController
         $request->file('thumb_image')->move(storage_path('app/public/album_thumbs/'), $photoName);
 
         $album = Album::create([
-            'user_id' => $request->user()->id,
+            'user_id' => $request->studio_id,
             'remark' => $request->remark,
             'thumb_image' => '',
             'album_url' => $request->album_url,

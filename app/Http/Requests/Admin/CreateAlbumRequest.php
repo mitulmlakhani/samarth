@@ -24,7 +24,7 @@ class CreateAlbumRequest extends FormRequest
     public function rules()
     {
         return [
-            'user_id' => 'required|exists:users,id',
+            'studio_id' => 'required|exists:users,id',
             'remark' => 'required',
             'thumb_image' => 'required|mimes:jpg,jpeg,png',
             'album_url' => 'required|url',

@@ -10,6 +10,6 @@ use App\Models\User;
 class StudioController extends BaseApiController
 {
     public function list(Request $request){
-        return Self::sendResponse(User::get(['id', 'name'])->toArray(), 'Album List');
+        return Self::sendResponse(User::get(['id', 'name', 'mobile'])->toArray(), 'Album List');
     }
 }
