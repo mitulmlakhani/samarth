@@ -15,7 +15,7 @@ class UpdateUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->string('mobile')->after('name');
-            $table->string('adddress')->after('password');
+            $table->string('adddress')->nullable()->after('password');
         });
     }
 

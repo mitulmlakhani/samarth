@@ -3,40 +3,48 @@
   <!-- Sidebar Menu -->
   <nav class="mt-2">
     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-      <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
-      <li class="nav-item has-treeview menu-open">
-        <a href="#" class="nav-link active">
-          <i class="nav-icon fa fa-dashboard"></i>
-          <p>
-            Starter Pages
-            <i class="right fa fa-angle-left"></i>
-          </p>
-        </a>
-        <ul class="nav nav-treeview">
-          <li class="nav-item">
-            <a href="#" class="nav-link active">
-              <i class="fa fa-circle-o nav-icon"></i>
-              <p>Active Page</p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="fa fa-circle-o nav-icon"></i>
-              <p>Inactive Page</p>
-            </a>
-          </li>
-        </ul>
-      </li>
       <li class="nav-item">
         <a href="#" class="nav-link">
           <i class="nav-icon fa fa-th"></i>
           <p>
-            Simple Link
-            <span class="right badge badge-danger">New</span>
+            Dashboard
           </p>
         </a>
       </li>
+      
+      <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fa fa-th"></i>
+              <p>
+                Studios
+                <i class="right fa fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview" style="display: none;">
+              <li class="nav-item">
+                <a href="{{ route('admin.studio.create') }}" class="nav-link">
+                  <i class="fa fa-plus nav-icon"></i>
+                  <p>Create</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ route('admin.studios') }}" class="nav-link">
+                  <i class="fa fa-circle nav-icon"></i>
+                  <p>List</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+      <!-- <li class="nav-item">
+        <a href="{{ route('admin.studios') }}" class="nav-link">
+          <i class="nav-icon fa fa-th"></i>
+          <p>
+            Studios
+          </p>
+        </a>
+      </li> -->
+
       <li class="nav-item">
         <a href="#" class="nav-link"
           onclick="event.preventDefault(); document.getElementById('logout-form').submit();">

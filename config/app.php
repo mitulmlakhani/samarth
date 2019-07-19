@@ -177,6 +177,8 @@ return [
 
         Barryvdh\Debugbar\ServiceProvider::class,
 
+        Yajra\DataTables\DataTablesServiceProvider::class,
+
     ],
 
     /*

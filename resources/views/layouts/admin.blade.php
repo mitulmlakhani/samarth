@@ -12,10 +12,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- CSRF Token -->
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
-  <title>{{ config('app.name') }} | </title>
+  <title>{{ config('app.name') }} | @yield('page-title')</title>
 
   <!-- Styles -->
   <link rel="stylesheet" href="{{ asset('assets/css/app.css') }}">
+  @stack('styles')
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -53,12 +54,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1 class="m-0 text-dark">Starter Page</h1>
+              <h1 class="m-0 text-dark">@yield('module')</h1>
             </div><!-- /.col -->
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active">Starter Page</li>
+                <li class="breadcrumb-item active">@yield('page-title')</li>
               </ol>
             </div><!-- /.col -->
           </div><!-- /.row -->
@@ -91,6 +92,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
   <!-- Scripts -->
   <script src="{{ asset('assets/js/app.js') }}"></script>
+  @stack('scripts')
 </body>
 
 </html>

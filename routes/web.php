@@ -28,6 +28,12 @@ Route::prefix('admin')->group(function(){
             Route::get('/', function () {
                 return view('admin.home');
             });
+            
+            Route::prefix('studio')->group(function() {
+                Route::get('/', 'StudioController@index')->name('admin.studios');
+                Route::get('create', 'StudioController@create')->name('admin.studio.create');
+                Route::post('store', 'StudioController@store')->name('admin.studio.store');
+            });
         });
     });
 });
