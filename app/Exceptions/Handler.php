@@ -104,7 +104,7 @@ class Handler extends ExceptionHandler
 			], 401);
 			
 		} else {
-			return redirect()->guest('admin.login');
+			return redirect()->guest('admin/login');
 		}
 	}
 }
