@@ -37,7 +37,15 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    protected $appends = [
+        'avatar_url'
+    ];
+
     public function albums(){
-        return $this->hasMany('Models\Album');
+        return $this->hasMany('App\Models\Album');
+    }
+
+    public function GetAvatarUrlAttribute() {
+        return url('storage/'. ($this->avatar ?: 'user_default.png'));
     }
 }

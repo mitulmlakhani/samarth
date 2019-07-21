@@ -15,7 +15,19 @@ class Album extends Model
         'mobile',
     ];
 
-    public function user(){
-        return $this->hasOne('Models\User');
+    protected $appends = [
+        'thumb_url'
+    ];
+
+    public function studio() {
+        return $this->belongsTo('App\Models\User', 'user_id');
+    }
+
+    public function setAlbumUrlAttribute($value){
+        return $this->attributes['album_url'] = substr_replace($value, 1, -1);
+    }
+
+    public function getThumbUrlAttribute() {
+        return url('storage/album_thumbs/'. ($this->thumb_image ?: 'default-image.jpg'));
     }
 }
