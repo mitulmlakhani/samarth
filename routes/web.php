@@ -49,13 +49,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-
-Route::get('studio/api/getstudio/{code}', 'Api\AlbumController@get');
+Route::prefix('studio')->group(function() {
+    Auth::routes();
+    Route::get('studio/api/getstudio/{code}', 'Api\AlbumController@get');
+    Route::namespace('Studio')->group(function() {
+        Route::middleware('auth:web')->group(function() {
+            Route::get('/', 'HomeController@index')->name('home');
+            Route::get('album', 'AlbumController@index')->name('studio.albums');
+        });
+    });
+});
