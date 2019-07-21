@@ -38,8 +38,16 @@ class Admin extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    protected $appends = [
+        'avatar_url'
+    ];
+
     public function sendPasswordResetNotification($token)
     {
         $this->notify(new AdminResetPasswordNotification($token));
+    }
+
+    public function GetAvatarUrlAttribute() {
+        return url('storage/'. ($this->avatar ?: 'user_default.png'));
     }
 }

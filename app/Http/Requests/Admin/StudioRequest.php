@@ -25,8 +25,8 @@ class StudioRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'mobile' => 'required|digits:10|unique:users,mobile',
-            'email' => 'required|email|unique:users,email',
+            'mobile' => 'required|digits:10|unique:users,mobile'.($this->isMethod('PUT') ? ','.$this->route('user')->id : ''),
+            'email' => 'required|email|unique:users,email'.($this->isMethod('PUT') ? ','.$this->route('user')->id : ''),
         ];
     }
 }

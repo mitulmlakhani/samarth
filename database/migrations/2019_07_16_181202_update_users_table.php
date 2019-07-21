@@ -18,6 +18,7 @@ class UpdateUsersTable extends Migration
             $table->string('address')->nullable()->after('password');
             $table->string('location')->nullable()->after('address');
             $table->string('avatar')->nullable()->after('location');
+            $table->softDeletes()->after('updated_at');
         });
     }
 

@@ -37,7 +37,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
       <!-- Brand Logo -->
       <a href="{{ url('/admin') }}" class="brand-link">
-        <img src="{{ ('assets/images/admin/AdminLTELogo.png') }}" alt="AdminLTE Logo"
+        <img src="{{ auth()->user()->avatar_url }}" alt="Admin"
           class="brand-image img-circle elevation-3" style="opacity: .8" alt="{{ config('app.name') }}">
         <span class="brand-text font-weight-light">{{ config('app.name') }}</span>
       </a>

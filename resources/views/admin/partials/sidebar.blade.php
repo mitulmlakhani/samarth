@@ -14,7 +14,7 @@
       
       <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
-              <i class="nav-icon fa fa-th"></i>
+              <i class="nav-icon fa fa-video-camera"></i>
               <p>
                 Studios
                 <i class="right fa fa-angle-left"></i>
@@ -36,14 +36,14 @@
             </ul>
           </li>
 
-      <!-- <li class="nav-item">
-        <a href="{{ route('admin.studios') }}" class="nav-link">
-          <i class="nav-icon fa fa-th"></i>
+      <li class="nav-item">
+        <a href="{{ route('admin.albums') }}" class="nav-link">
+          <i class="nav-icon fa fa-book"></i>
           <p>
-            Studios
+            Albums
           </p>
         </a>
-      </li> -->
+      </li>
 
       <li class="nav-item">
         <a href="#" class="nav-link"

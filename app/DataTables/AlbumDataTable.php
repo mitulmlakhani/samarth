@@ -2,10 +2,10 @@
 
 namespace App\DataTables;
 
-use App\Models\User;
+use App\Models\Album;
 use Yajra\DataTables\Services\DataTable;
 
-class StudioDataTable extends DataTable
+class AlbumDataTable extends DataTable
 {
     /**
      * Build DataTable class.
@@ -16,10 +16,10 @@ class StudioDataTable extends DataTable
     public function dataTable($query)
     {
         return datatables($query)
-            ->addColumn('action', function($user) {
-                return '<a class="btn btn-sm btn-primary" href="'. route('admin.studio.edit', $user->id) .'"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                        <a class="btn btn-sm btn-danger" onclick="return confirm(\'Are you Sure ? Studio will be deleted !\')" href="'. route('admin.studio.delete', $user->id) .'"><i class="fa fa-trash" aria-hidden="true"></i></a>';
-            });
+            ->editColumn('thumb_image', function($album) {
+                return '<a target="_blank" href="'.$album->thumb_url.'"><img src="'.$album->thumb_url.'" height="30"></a>';
+            })
+            ->rawColumns(['thumb_image']);
     }
 
     /**
@@ -28,9 +28,13 @@ class StudioDataTable extends DataTable
      * @param \App\User $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(User $model)
+    public function query(Album $model)
     {
-        return $model->newQuery()->select('id', 'name', 'mobile','email', 'created_at');
+        $query = $model->newQuery()->join('users', 'users.id', '=', 'albums.id')->select('albums.id', 'users.name', 'albums.remark', 'albums.mobile', 'albums.pin', 'albums.thumb_image', 'albums.created_at');
+        if(isset($_GET['studioId']) && $_GET['studioId']){
+            $query = $query->where('users.id', $_GET['studioId']);
+        }
+        return $query;
     }
 
     /**
@@ -43,7 +47,6 @@ class StudioDataTable extends DataTable
         return $this->builder()
                     ->columns($this->getColumns())
                     ->minifiedAjax()
-                    ->addAction(['width' => '80px'])
                     ->parameters($this->getBuilderParameters());
     }
 
@@ -56,9 +59,15 @@ class StudioDataTable extends DataTable
     {
         return [
             'id',
-            'name',
+            [
+               'name' => 'users.name',
+               'title' => 'Studio',
+               'data' => 'name',
+            ],
+            'remark',
             'mobile',
-            'email',
+            'pin',
+            'thumb_image',
             'created_at',
         ];
     }

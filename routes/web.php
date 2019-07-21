@@ -22,17 +22,24 @@ Route::prefix('admin')->group(function(){
         Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('admin.password.reset');
     });
 
-    Route::middleware('auth:admin')->group(function(){
-        Route::namespace('Admin')->group(function () {
+    Route::middleware('auth:admin')->group(function() {
+        Route::namespace('Admin')->group(function() {
             Route::post('logout', 'Auth\LoginController@logout')->name('admin.logout');
             Route::get('/', function () {
                 return view('admin.home');
+            });
+
+            Route::prefix('albums')->group(function() {
+                Route::get('', 'AlbumController@index')->name('admin.albums');
             });
             
             Route::prefix('studio')->group(function() {
                 Route::get('/', 'StudioController@index')->name('admin.studios');
                 Route::get('create', 'StudioController@create')->name('admin.studio.create');
                 Route::post('store', 'StudioController@store')->name('admin.studio.store');
+                Route::get('edit/{user}', 'StudioController@edit')->name('admin.studio.edit');
+                Route::put('update/{user}', 'StudioController@update')->name('admin.studio.update');
+                Route::get('delete/{user}', 'StudioController@delete')->name('admin.studio.delete');
             });
         });
     });
