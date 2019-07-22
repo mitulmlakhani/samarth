@@ -26,10 +26,18 @@ class CreateAlbumRequest extends FormRequest
         return [
             'studio_id' => 'required|exists:users,id',
             'remark' => 'required',
-            'thumb_image' => 'nullable|mimes:jpg,jpeg,png',
+            'thumb_image' => 'nullable|url',
             'album_url' => 'required|url',
             'pin' => 'required',
             'mobile' => 'required',
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'thumb_image.url' => 'Please enter valid image url.',
+            'album_url.url' => 'Please enter valid album url.',
         ];
     }
 }

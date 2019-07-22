@@ -11,11 +11,6 @@ use App\Models\Album;
 class AlbumController extends BaseApiController
 {
     public function create(CreateAlbumRequest $request) {
-        if($request->hasFile('thumb_image')) {
-            $strippedName = str_replace(' ', '', $request->file('thumb_image')->getClientOriginalName());
-            $photoName = time() .'_'. $strippedName;
-            $request->file('thumb_image')->move(storage_path('app/public/album_thumbs/'), $photoName);
-        }
 
         $album = Album::create([
             'user_id' => $request->studio_id,
