@@ -30,9 +30,9 @@ class AlbumDataTable extends DataTable
      */
     public function query(Album $model)
     {
-        $query = $model->newQuery()->join('users', 'users.id', '=', 'albums.id')->select('albums.id', 'users.name', 'albums.remark', 'albums.mobile', 'albums.pin', 'albums.thumb_image', 'albums.created_at');
+        $query = $model->newQuery()->join('users', 'users.id', '=', 'albums.user_id')->select('albums.id', 'users.name', 'albums.remark', 'albums.mobile', 'albums.pin', 'albums.thumb_image', 'albums.created_at');
         if(isset($_GET['studioId']) && $_GET['studioId']){
-            $query = $query->where('users.id', $_GET['studioId']);
+            $query = $query->where('albums.user_id', $_GET['studioId']);
         }
         return $query;
     }
