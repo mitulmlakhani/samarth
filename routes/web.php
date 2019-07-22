@@ -52,7 +52,7 @@ Route::get('/', function () {
 
 Route::prefix('studio')->group(function() {
     Auth::routes();
-    Route::get('studio/api/getstudio/{code}', 'Api\AlbumController@get');
+    Route::get('api/getstudio/{code}', 'Api\AlbumController@get');
     Route::namespace('Studio')->group(function() {
         Route::middleware('auth:web')->group(function() {
             Route::get('/', 'HomeController@index')->name('home');
