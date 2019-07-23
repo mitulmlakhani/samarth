@@ -5,7 +5,7 @@
 @section('content')
 <div class="card">
     <div class="card-body login-card-body">
-        <p class="login-box-msg">Sign in to start your session</p>
+        <p class="login-box-msg">Sign in to admin panel</p>
 
         <form method="POST" action="{{ route('admin.login') }}">
             @csrf
@@ -46,7 +46,7 @@
             </div>
         </form>
         @if (Route::has('password.request'))
-        <a class="btn btn-link" href="{{ route('admin.password.request') }}">
+        <a class="btn btn-link" href="{{ route('password.request') }}">
             {{ __('Forgot Your Password?') }}
         </a>
         @endif
