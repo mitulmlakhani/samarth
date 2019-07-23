@@ -24,7 +24,7 @@ class AlbumController extends BaseApiController
                     'albums' => [
                         'id' => $album->id,
                         'name' => $album->remark,
-                        'thumb_image' => $album->thumb_url,
+                        'thumb_image' => $album->thumb_image,
                         'url' => $album->album_url,
                     ]
                 ],
