@@ -15,6 +15,7 @@ class AdminTableSeeder extends Seeder
         \App\Models\Admin::create([
             'name' => 'admin',
             'email' => 'admin@admin.com',
+            'mobile' => '1234567890',
             'password' => bcrypt('12345678')
         ]);
     }
