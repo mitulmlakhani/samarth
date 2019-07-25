@@ -21,6 +21,24 @@
           </p>
         </a>
       </li>
+      
+      <li class="nav-item">
+        <a href="{{ route('studio.portfolios') }}" class="nav-link">
+          <i class="nav-icon fa fa-book"></i>
+          <p>
+            Portfolio
+          </p>
+        </a>
+      </li>
+      
+      <li class="nav-item">
+        <a href="{{ route('studio.team') }}" class="nav-link">
+          <i class="nav-icon fa fa-book"></i>
+          <p>
+            Team
+          </p>
+        </a>
+      </li>
 
       <li class="nav-item">
         <a href="#" class="nav-link"

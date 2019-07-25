@@ -54,9 +54,47 @@ Route::prefix('studio')->group(function() {
     Auth::routes();
     Route::get('api/getstudio/{code}', 'Api\AlbumController@get');
     Route::namespace('Studio')->group(function() {
+
         Route::middleware('auth:web')->group(function() {
             Route::get('/', 'HomeController@index')->name('home');
+            Route::get('profile', 'ProfileController@index')->name('studio.profile');
+            Route::post('profile', 'ProfileController@save')->name('studio.profile.save');
+
+            // Album
             Route::get('album', 'AlbumController@index')->name('studio.albums');
+            // Portfolio
+            Route::prefix('portfolio')->group(function() {
+                Route::get('/', 'PortfolioController@index')->name('studio.portfolios');
+                Route::get('create', 'PortfolioController@create')->name('studio.portfolio.create');
+                Route::post('store', 'PortfolioController@store')->name('studio.portfolio.store');
+                Route::get('{portfolio}/delete', 'PortfolioController@delete')->name('studio.portfolio.delete');
+            });
+
+            // Services
+            Route::prefix('service')->group(function() {
+                Route::get('/', 'ServicesController@index')->name('studio.services');
+                Route::get('create', 'ServicesController@create')->name('studio.service.create');
+                Route::post('store', 'ServicesController@store')->name('studio.service.store');
+                Route::get('{service}/delete', 'ServicesController@delete')->name('studio.service.delete');
+            });
+            
+            // Team
+            Route::prefix('team')->group(function() {
+                Route::get('/', 'TeamController@index')->name('studio.team');
+                Route::get('create', 'TeamController@create')->name('studio.team.create');
+                Route::post('store', 'TeamController@store')->name('studio.team.store');
+                Route::get('{team}/delete', 'TeamController@delete')->name('studio.team.delete');
+            });
+            
+            // Team
+            Route::prefix('banner')->group(function() {
+                Route::get('/', 'BannerController@index')->name('studio.banners');
+                Route::get('create', 'BannerController@create')->name('studio.banner.create');
+                Route::post('store', 'BannerController@store')->name('studio.banner.store');
+                Route::get('{banner}/delete', 'BannerController@delete')->name('studio.banner.delete');
+            });
+
         });
+
     });
 });
