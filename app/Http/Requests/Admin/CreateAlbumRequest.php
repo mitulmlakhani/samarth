@@ -29,7 +29,7 @@ class CreateAlbumRequest extends FormRequest
             'thumb_image' => 'nullable|url',
             'album_url' => 'required|url',
             'pin' => 'required',
-            'mobile' => 'required',
+            'mobile' => 'nullable',
         ];
     }
 

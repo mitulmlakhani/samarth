@@ -20,7 +20,7 @@ class CreateAlbumsTable extends Migration
             $table->string('thumb_image')->nullable();
             $table->string('album_url');
             $table->string('pin');
-            $table->string('mobile');
+            $table->string('mobile')->nullable();
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });

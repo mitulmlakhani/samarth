@@ -21,6 +21,10 @@ class AlbumController extends BaseApiController
                     'email' => $album->studio->email,
                     'address' => $album->studio->address,
                     'location' => $album->studio->location,
+                    'facebook_link' => $album->studio->facebook_link,
+                    'instagram_link' => $album->studio->instagram_link,
+                    'pinrest_link' => $album->studio->pinrest_link,
+                    'website' => $album->studio->website,
                     'albums' => [
                         'id' => $album->id,
                         'name' => $album->remark,
