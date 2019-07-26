@@ -57,8 +57,15 @@ Route::prefix('studio')->group(function() {
 
         Route::middleware('auth:web')->group(function() {
             Route::get('/', 'HomeController@index')->name('home');
+            // Profile
             Route::get('profile', 'ProfileController@index')->name('studio.profile');
             Route::post('profile', 'ProfileController@save')->name('studio.profile.save');
+            // Change Password
+            Route::get('password/change', 'ProfileController@showChangePassword')->name('studio.password.change');
+            Route::post('password/change', 'ProfileController@changePassword')->name('studio.password.save');
+            // Profile
+            Route::get('social', 'ProfileController@socialLinks')->name('studio.social');
+            Route::post('social/change', 'ProfileController@saveSocialLinks')->name('studio.social.save');
 
             // Album
             Route::get('album', 'AlbumController@index')->name('studio.albums');

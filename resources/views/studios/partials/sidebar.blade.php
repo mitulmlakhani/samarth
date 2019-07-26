@@ -126,6 +126,24 @@
           </p>
         </a>
       </li>
+      
+      <li class="nav-item">
+        <a href="{{ route('studio.social') }}" class="nav-link">
+          <i class="nav-icon fa fa-user"></i>
+          <p>
+            Social
+          </p>
+        </a>
+      </li>
+      
+      <li class="nav-item">
+        <a href="{{ route('studio.password.change') }}" class="nav-link">
+          <i class="nav-icon fa fa-user"></i>
+          <p>
+            Change Password
+          </p>
+        </a>
+      </li>
 
       <li class="nav-item">
         <a href="#" class="nav-link" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
