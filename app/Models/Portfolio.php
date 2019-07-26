@@ -12,5 +12,11 @@ class Portfolio extends Model
         'portfolio_image',
     ];
 
+    protected $appends = ['portfolio_url'];
+
     public $timestamps = false;
+
+    public function getPortfolioUrlAttribute(){
+        return url('storage/portfolio/'.$this->attributes['portfolio_image']);
+    }
 }

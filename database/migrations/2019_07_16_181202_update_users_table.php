@@ -18,6 +18,7 @@ class UpdateUsersTable extends Migration
             $table->string('address')->nullable()->after('password');
             $table->string('location')->nullable()->after('address');
             $table->string('avatar')->nullable()->after('location');
+            $table->string('theme')->nullable()->after('avatar');
             $table->softDeletes()->after('updated_at');
         });
     }
@@ -30,8 +31,11 @@ class UpdateUsersTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->drop('mobile');
-            $table->drop('adddress');
+            $table->dropColumn('mobile');
+            $table->dropColumn('adddress');
+            $table->dropColumn('location');
+            $table->dropColumn('avatar');
+            $table->dropColumn('theme');
         });
     }
 }

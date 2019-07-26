@@ -13,5 +13,11 @@ class Team extends Model
         'avatar',
     ];
 
+    protected $appends = ['team_avatar'];
+
     public $timestamps = false;
+
+    public function getTeamAvatarAttribute(){
+        return url('storage/team/'.$this->attributes['avatar']);
+    }
 }

@@ -17,7 +17,17 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'mobile', 'adddress', 'avatar',
+        'name',
+        'email',
+        'password',
+        'mobile',
+        'adddress',
+        'avatar',
+        'theme', 
+        'facebook_link',
+        'instagram_link',
+        'pinrest_link',
+        'website',
     ];
 
     /**
@@ -44,6 +54,22 @@ class User extends Authenticatable
 
     public function albums(){
         return $this->hasMany('App\Models\Album');
+    }
+    
+    public function banners(){
+        return $this->hasMany('App\Models\Banner');
+    }
+    
+    public function services(){
+        return $this->hasMany('App\Models\Service');
+    }
+    
+    public function teams(){
+        return $this->hasMany('App\Models\Team');
+    }
+    
+    public function portfolios(){
+        return $this->hasMany('App\Models\Portfolio');
     }
 
     public function GetAvatarUrlAttribute() {

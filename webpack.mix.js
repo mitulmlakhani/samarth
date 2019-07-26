@@ -13,6 +13,7 @@ mix.config.fileLoaderDirs.images = 'assets/images';
  |
  */
  mix.sass('resources/assets/sass/app.scss', 'public/assets/css/app.css')
-   .js('resources/assets/js/app.js', 'public/assets/js');
+   .js('resources/assets/js/app.js', 'public/assets/js')
+   .copy('resources/assets/themes', 'public/assets/themes');
 
 

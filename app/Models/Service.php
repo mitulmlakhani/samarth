@@ -13,5 +13,11 @@ class Service extends Model
         'service_image',
     ];
 
+    protected $appends = ['service_url'];
+
     public $timestamps = false;
+
+    public function getServiceUrlAttribute(){
+        return url('storage/service/'.$this->attributes['service_image']);
+    }
 }

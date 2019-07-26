@@ -12,5 +12,11 @@ class Banner extends Model
         'banner_image',
     ];
 
+    protected $appends = ['banner_url'];
+
     public $timestamps = false;
+
+    public function getBannerUrlAttribute(){
+        return url('storage/banner/'.$this->attributes['banner_image']);
+    }
 }
