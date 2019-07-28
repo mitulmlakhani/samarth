@@ -29,6 +29,7 @@ class ProfileController extends Controller
             'name' => $request->name,
             'mobile' => $request->mobile,
             'email' => $request->email,
+            'website_username' => $request->website_username,
             'address' => $request->address,
             'location' => $request->location,
             'avatar' => $photoName,

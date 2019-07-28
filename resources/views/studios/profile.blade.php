@@ -37,9 +37,15 @@
                     </div>
                     
                     <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="text" class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" name="email" value="{{ old('email') ?: auth()->user()->email }}" id="email" placeholder="Enter email">
+                        <label for="website_username">Email</label>
+                        <input type="email" class="form-control {{ $errors->has('website_username') ? 'is-invalid' : '' }}" name="email" value="{{ old('email') ?: auth()->user()->email }}" id="email" placeholder="Enter email">
                         <div class="invalid-feedback">{{ $errors->first('email') }}</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="website_username">Website Name</label>
+                        <input type="text" class="form-control {{ $errors->has('website_username') ? 'is-invalid' : '' }}" name="website_username" value="{{ old('website_username') ?: auth()->user()->website_username }}" id="website_username" placeholder="Enter website name">
+                        <div class="invalid-feedback">{{ $errors->first('website_username') }}</div>
                     </div>
                     
                     <div class="form-group">

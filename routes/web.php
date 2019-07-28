@@ -49,14 +49,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('studio/web/{mobile}', function($mobile) {
-    $user = App\Models\User::where('mobile', $mobile)->first();
-    if($user) {
-        return view('themes.'.$user->theme.'.index')->with('user', $user);
-    }
-    abort(404);
-});
-
 
 Route::prefix('studio')->group(function() {
     Auth::routes();
@@ -112,4 +104,12 @@ Route::prefix('studio')->group(function() {
         });
 
     });
+});
+
+Route::get('{website_username}', function($website_username) {
+    $user = App\Models\User::where('website_username', $website_username)->with('banners', 'services', 'teams', 'portfolios')->first();
+    if($user) {
+        return view('themes.'.$user->theme.'.index')->with('user', $user);
+    }
+    abort(404);
 });
