@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Studio;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\User;
-use App\Datatables\StudioAlbumDataTable;
+use App\DataTables\StudioAlbumDataTable;
 
 class AlbumController extends Controller
 {
