@@ -32,6 +32,7 @@ class ProfileController extends Controller
             'website_username' => $request->website_username,
             'address' => $request->address,
             'location' => $request->location,
+            'theme' => $request->theme,
             'avatar' => $photoName,
         ]);
         $user->save();

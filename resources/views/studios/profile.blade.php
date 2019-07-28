@@ -55,7 +55,7 @@
                     </div>
                     
                     <div class="form-group">
-                        <label for="location">Location</label>
+                        <label for="theme">Location</label>
                         <input type="text" class="form-control {{ $errors->has('location') ? 'is-invalid' : '' }}" name="location" value="{{ old('location') ?: auth()->user()->location }}" id="location" placeholder="Latitude, Longitude (21.72, 72.21)">
                         <div class="invalid-feedback">{{ $errors->first('location') }}</div>
                     </div>
@@ -66,6 +66,14 @@
                         <div class="invalid-feedback">{{ $errors->first('image') }}</div>
                         <br>
                         <img src="{{ url('storage/'. (auth()->user()->avatar ?: 'user_default.png')) }}" width="100" height="100" alt="">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="theme">Select Theme</label>
+                        <select class="form-control {{ $errors->has('theme') ? 'is-invalid' : '' }}" name="theme" id="theme">
+                            <option value="hope" {{ auth()->user()->theme == 'hope' ? 'selected' : '' }} >Hope</option>
+                        </select>
+                        <div class="invalid-feedback">{{ $errors->first('theme') }}</div>
                     </div>
 
                     <button type="submit" class="btn btn-primary">Submit</button>
