@@ -14,7 +14,7 @@ class AddWebsiteUsernameFieldToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('website_username')->unique()->after('mobile');
+            $table->string('website_username')->nullable()->unique()->after('password');
         });
     }
 
