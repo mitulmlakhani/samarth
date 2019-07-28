@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\BaseApiController;
 use App\Http\Requests\Admin\CreateAlbumRequest;
 use App\Models\Album;
+use App\Models\User;
 
 class AlbumController extends BaseApiController
 {
@@ -21,6 +22,11 @@ class AlbumController extends BaseApiController
             'mobile' => $request->mobile,
         ]);
 
+        $studio = User::find($request->studio_id);
+        $msg = str_replace(['#studio#', '#remark#', '#pin#'], [$studio->name, $request->remark, $request->pin], config('custom.sms.albumtpl'));
+        
+        sendSms($studio->mobile, $msg);
+        
         return Self::sendResponse([], 'New Album Created Successfully');
     }
 }
