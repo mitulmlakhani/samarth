@@ -42,7 +42,7 @@
                     <nav class="classy-navbar justify-content-between" id="alimeNav">
 
                         <!-- Logo -->
-                        <a class="nav-brand" href="{{ url('studio/'.$user->mobile) }}"><img src="{{ $user->avatar_url }}" alt="{{ $user->name }}"  height="80" width="80"></a>
+                        <a class="nav-brand" href="{{ url('studio/'.$user->mobile) }}"><img src="{{ $user->avatar_url }}" alt="{{ $user->name }}"  style="height:80px; width:80px;"></a>
 
                         <!-- Navbar Toggler -->
                         <div class="classy-navbar-toggler">
@@ -280,7 +280,7 @@
                         </div>
                         <!-- Footer Logo -->
                         <div class="footer-logo">
-                            <a href="#"><img src="{{ $user->avatar_url }}" alt=""></a>
+                            <a href="#"><img src="{{ $user->avatar_url }}" alt="" style="height:80px; width:80px;"></a>
                         </div>
                         <!-- Social Info -->
                         <div class="social-info">
