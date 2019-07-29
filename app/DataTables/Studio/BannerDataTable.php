@@ -33,7 +33,7 @@ class BannerDataTable extends DataTable
      */
     public function query(Banner $model)
     {
-        return $model->newQuery()->select('id', 'title', 'banner_image');
+        return $model->newQuery()->select('id', 'title', 'banner_image')->where('user_id', auth()->user()->id);
     }
 
     /**

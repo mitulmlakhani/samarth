@@ -17,7 +17,7 @@ class StudioAlbumDataTable extends DataTable
     {
         return datatables($query)
             ->editColumn('thumb_image', function($album) {
-                return '<a target="_blank" href="'.$album->thumb_url.'"><img src="'.$album->thumb_url.'" height="30"></a>';
+                return '<a target="_blank" href="'.$album->thumb_image.'"><img src="'.$album->thumb_image.'" height="30"></a>';
             })
             ->rawColumns(['thumb_image']);
     }
@@ -30,7 +30,7 @@ class StudioAlbumDataTable extends DataTable
      */
     public function query(Album $model)
     {
-        $query = $model->newQuery()->select('id', 'remark', 'mobile', 'pin', 'thumb_image', 'created_at');
+        $query = $model->newQuery()->where('user_id', auth()->user()->id)->select('id', 'remark', 'mobile', 'pin', 'thumb_image', 'created_at');
         return $query;
     }
 
