@@ -33,7 +33,7 @@ class TeamDataTable extends DataTable
      */
     public function query(Team $model)
     {
-        return $model->newQuery()->select('id', 'name', 'position','avatar');
+        return $model->newQuery()->select('id', 'name', 'position','avatar')->where('user_id', auth()->user()->id);
     }
 
     /**

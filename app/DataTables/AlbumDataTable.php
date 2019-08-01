@@ -17,7 +17,7 @@ class AlbumDataTable extends DataTable
     {
         return datatables($query)
             ->editColumn('thumb_image', function($album) {
-                return '<a target="_blank" href="'.$album->thumb_url.'"><img src="'.$album->thumb_url.'" height="30"></a>';
+                return '<a target="_blank" href="'.$album->thumb_image.'"><img src="'.$album->thumb_image.'" height="30"></a>';
             })
             ->rawColumns(['thumb_image']);
     }

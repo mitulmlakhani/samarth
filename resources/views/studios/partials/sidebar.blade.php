@@ -24,7 +24,7 @@
 
       <li class="nav-item has-treeview">
         <a href="#" class="nav-link">
-          <i class="nav-icon fa fa-video-camera"></i>
+          <i class="nav-icon fa fa-picture-o"></i>
           <p>
             Banners
             <i class="right fa fa-angle-left"></i>
@@ -48,7 +48,7 @@
       
       <li class="nav-item has-treeview">
         <a href="#" class="nav-link">
-          <i class="nav-icon fa fa-video-camera"></i>
+          <i class="nav-icon fa fa-globe"></i>
           <p>
             Services
             <i class="right fa fa-angle-left"></i>
@@ -72,7 +72,7 @@
       
       <li class="nav-item has-treeview">
         <a href="#" class="nav-link">
-          <i class="nav-icon fa fa-video-camera"></i>
+          <i class="nav-icon fa fa-bars"></i>
           <p>
             Portfolio
             <i class="right fa fa-angle-left"></i>
@@ -96,7 +96,7 @@
 
       <li class="nav-item has-treeview">
         <a href="#" class="nav-link">
-          <i class="nav-icon fa fa-video-camera"></i>
+          <i class="nav-icon fa fa-users"></i>
           <p>
             Team
             <i class="right fa fa-angle-left"></i>
@@ -129,7 +129,7 @@
       
       <li class="nav-item">
         <a href="{{ route('studio.social') }}" class="nav-link">
-          <i class="nav-icon fa fa-user"></i>
+          <i class="nav-icon fa fa-share-square-o"></i>
           <p>
             Social
           </p>
@@ -138,7 +138,7 @@
       
       <li class="nav-item">
         <a href="{{ route('studio.password.change') }}" class="nav-link">
-          <i class="nav-icon fa fa-user"></i>
+          <i class="nav-icon fa fa-key"></i>
           <p>
             Change Password
           </p>

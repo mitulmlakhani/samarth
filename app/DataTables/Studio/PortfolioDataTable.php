@@ -33,7 +33,7 @@ class PortfolioDataTable extends DataTable
      */
     public function query(Portfolio $model)
     {
-        return $model->newQuery()->select('id', 'category', 'portfolio_image');
+        return $model->newQuery()->select('id', 'category', 'portfolio_image')->where('user_id', auth()->user()->id);
     }
 
     /**

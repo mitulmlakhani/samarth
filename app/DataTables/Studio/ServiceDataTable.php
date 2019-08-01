@@ -33,7 +33,7 @@ class ServiceDataTable extends DataTable
      */
     public function query(Service $model)
     {
-        return $model->newQuery()->select('id', 'name','description', 'service_image');
+        return $model->newQuery()->select('id', 'name','description', 'service_image')->where('user_id', auth()->user()->id);
     }
 
     /**
