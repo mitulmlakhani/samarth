@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('page-title', 'Portfolio List')
-@section('module', 'Portfolio')
+@section('page-title', 'Team')
+@section('module', 'Team')
 
 @push('styles')
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.18/r-2.2.2/datatables.min.css" />
@@ -23,7 +23,7 @@
 
         <div class="card card-primary card-outline">
             <div class="card-header">
-                <h5 class="m-0">Portfolio</h5>
+                <h5 class="m-0">Team</h5>
             </div>
             <div class="card-body">
                 {!! $dataTable->table() !!}
