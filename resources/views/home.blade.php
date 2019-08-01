@@ -20,7 +20,7 @@
               <div class="icon">
                 <i class="fa fa-book"></i>
               </div>
-              <a href="{{ route('admin.studios') }}" class="small-box-footer">More info <i
+              <a href="{{ route('studio.albums') }}" class="small-box-footer">More info <i
                   class="fa fa-arrow-circle-right"></i></a>
             </div>
           </div>
@@ -35,7 +35,7 @@
               <div class="icon">
                 <i class="fa fa-picture-o "></i>
               </div>
-              <a href="{{ route('admin.studios') }}" class="small-box-footer">More info <i
+              <a href="{{ route('studio.banners') }}" class="small-box-footer">More info <i
                   class="fa fa-arrow-circle-right"></i></a>
             </div>
           </div>
@@ -50,7 +50,7 @@
               <div class="icon">
                 <i class="fa fa-handshake-o"></i>
               </div>
-              <a href="{{ route('admin.studios') }}" class="small-box-footer">More info <i
+              <a href="{{ route('studio.services') }}" class="small-box-footer">More info <i
                   class="fa fa-arrow-circle-right"></i></a>
             </div>
           </div>
@@ -65,7 +65,7 @@
               <div class="icon">
                 <i class="fa fa-briefcase"></i>
               </div>
-              <a href="{{ route('admin.studios') }}" class="small-box-footer">More info <i
+              <a href="{{ route('studio.portfolios') }}" class="small-box-footer">More info <i
                   class="fa fa-arrow-circle-right"></i></a>
             </div>
           </div>
@@ -80,7 +80,7 @@
               <div class="icon">
                 <i class="fa fa-users"></i>
               </div>
-              <a href="{{ route('admin.studios') }}" class="small-box-footer">More info <i
+              <a href="{{ route('studio.team') }}" class="small-box-footer">More info <i
                   class="fa fa-arrow-circle-right"></i></a>
             </div>
           </div>
