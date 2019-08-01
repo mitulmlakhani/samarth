@@ -16,10 +16,13 @@ class AlbumDataTable extends DataTable
     public function dataTable($query)
     {
         return datatables($query)
+            ->addColumn('action', function($album) {
+                return '<a class="btn btn-sm btn-danger" onclick="return confirm(\'Are you Sure ? Album will be deleted !\')" href="'. route('admin.album.delete', $album->id) .'"><i class="fa fa-trash" aria-hidden="true"></i></a>';
+            })
             ->editColumn('thumb_image', function($album) {
                 return '<a target="_blank" href="'.$album->thumb_image.'"><img src="'.$album->thumb_image.'" height="30"></a>';
             })
-            ->rawColumns(['thumb_image']);
+            ->rawColumns(['thumb_image', 'action']);
     }
 
     /**
@@ -47,6 +50,7 @@ class AlbumDataTable extends DataTable
         return $this->builder()
                     ->columns($this->getColumns())
                     ->minifiedAjax()
+                    ->addAction(['width' => '180px'])
                     ->parameters($this->getBuilderParameters());
     }
 
