@@ -26,7 +26,7 @@ Route::prefix('admin')->group(function(){
         Route::namespace('Admin')->group(function() {
             Route::post('logout', 'Auth\LoginController@logout')->name('admin.logout');
             Route::get('/', function () {
-                return view('admin.home');
+                return view('admin.home')->with(['total_studios' => \App\Models\User::count(), 'total_ambums' => \App\Models\Album::count()]);
             });
 
             Route::prefix('albums')->group(function() {

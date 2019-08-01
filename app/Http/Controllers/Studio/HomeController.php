@@ -24,6 +24,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        return view('home')->with([
+            'albums' => \App\Models\Album::where('user_id', auth()->user()->id)->count(),
+            'banners' => \App\Models\Banner::where('user_id', auth()->user()->id)->count(),
+            'services' => \App\Models\Service::where('user_id', auth()->user()->id)->count(),
+            'portfolio' => \App\Models\Portfolio::where('user_id', auth()->user()->id)->count(),
+            'team' => \App\Models\Team::where('user_id', auth()->user()->id)->count(),
+        ]);
     }
 }
