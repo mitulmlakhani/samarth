@@ -17,7 +17,8 @@ class StudioDataTable extends DataTable
     {
         return datatables($query)
             ->addColumn('action', function($user) {
-                return '<a class="btn btn-sm btn-primary" href="'. route('admin.studio.edit', $user->id) .'"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                return '<a class="btn btn-sm btn-primary" href="'. route('admin.studio.login', $user->id) .'" target="_blank"><i class="fa fa-sign-in" aria-hidden="true"></i></a>
+                        <a class="btn btn-sm btn-primary" href="'. route('admin.studio.edit', $user->id) .'"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                         <a class="btn btn-sm btn-danger" onclick="return confirm(\'Are you Sure ? Studio will be deleted !\')" href="'. route('admin.studio.delete', $user->id) .'"><i class="fa fa-trash" aria-hidden="true"></i></a>';
             });
     }
@@ -43,7 +44,7 @@ class StudioDataTable extends DataTable
         return $this->builder()
                     ->columns($this->getColumns())
                     ->minifiedAjax()
-                    ->addAction(['width' => '80px'])
+                    ->addAction(['width' => '180px'])
                     ->parameters($this->getBuilderParameters());
     }
 

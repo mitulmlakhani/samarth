@@ -40,6 +40,11 @@ Route::prefix('admin')->group(function(){
                 Route::get('edit/{user}', 'StudioController@edit')->name('admin.studio.edit');
                 Route::put('update/{user}', 'StudioController@update')->name('admin.studio.update');
                 Route::get('delete/{user}', 'StudioController@delete')->name('admin.studio.delete');
+                Route::get('panel/{id}', function($id) {
+                    $user = App\Models\User::find($id);
+                    \Auth::guard('web')->login($user);
+                    return redirect()->route('home');
+                })->name('admin.studio.login');
             });
         });
     });
