@@ -1,0 +1,135 @@
+    /* ----------------------------------------------------------
+    :: Template Name: Studio - Creative Photography Template
+    :: Author: Colorlib
+    :: Author URL: https://colorlib.com
+    :: Version: 1.0.0
+    :: Created: 31 January 2018
+    :: Last Updated: 31 January 2018
+    ---------------------------------------------------------- */
+
+    /* ============ PLACE YOUR CUSTOM CSS HERE ============ */
+	
+.col-4 {
+  position: relative;
+  width: 100%;
+}
+
+.image {
+  opacity: 1;
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: .5s ease;
+  backface-visibility: hidden;
+}
+
+.middle {
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  width:80%;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.col-4:hover .image {
+  opacity: 0.9;
+}
+
+.col-4:hover .middle {
+  opacity: 1;
+}
+
+.text {
+  background-color: #1d1d1d;
+  border-radius:10px;
+  width:100%;
+  color: #ffffff;
+  font-size: 16px;
+  padding: 16px 32px;
+}
+
+
+
+
+.why-choose-us-content {
+  -webkit-transition-duration: 800ms;
+  -o-transition-duration: 800ms;
+  transition-duration: 800ms;
+  background-color: #ffffff;
+  padding: 80px 30px 50px;
+  border-radius: 5px;
+  box-shadow: 3px 0 15px -1px rgba(0, 0, 0, 0.15);
+  position: relative;
+  z-index: 1;
+  margin-top: 50px; }
+  
+  
+  
+  .why-choose-us-content h4 {
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 15px;
+    -webkit-transition-duration: 800ms;
+    -o-transition-duration: 800ms;
+    transition-duration: 800ms; }
+  .why-choose-us-content p, .why-choose-us-content .content {
+    -webkit-transition-duration: 800ms;
+    -o-transition-duration: 800ms;
+    transition-duration: 800ms;
+    font-size: 14px;
+	margin-bottom: 0; }
+	
+	.why-choose-us-content .service-thumb {
+    margin: 0 auto 40px;
+    width:100%;
+     }
+	 
+  .why-choose-us-content .service-thumb img {
+     -webkit-transition-duration: 500ms;
+     -o-transition-duration: 500ms;
+     transition-duration: 500ms;
+	 
+	 width: 100%;
+	 border-radius: 05%;}
+	 
+	 
+.why-choose-us-content .service-thumb {
+    -webkit-transition-duration: 800ms;
+    -o-transition-duration: 800ms;
+    transition-duration: 800ms;
+	
+    height: 80px;
+    width: 80px;
+    display: inline-block;
+    border-radius: 5%;
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    margin-left: 70px; }
+	
+.why-choose-us-content .service-thumb img, .why-choose-us-content .service-thumb img {
+      -webkit-filter: grayscale(100%);
+      filter: grayscale(100%); }
+	
+.why-choose-us-content:hover .service-thumb img, .why-choose-us-content:focus .service-thumb img {
+      -webkit-filter: grayscale(0%);
+      filter: grayscale(0%); }
+	  
+.btn_read{
+	
+	text-decoration:underline;
+	font-weight:600;
+}
+
+	
+  .why-choose-us-content:hover, .why-choose-us-content:focus {
+    background-color: #1d1d1d;; }
+
+    .why-choose-us-content:hover h4,
+    .why-choose-us-content:hover p, .why-choose-us-content:focus h4,
+    .why-choose-us-content:focus p {
+      color: #ffffff; }

@@ -72,6 +72,8 @@
                         <label for="theme">Select Theme</label>
                         <select class="form-control {{ $errors->has('theme') ? 'is-invalid' : '' }}" name="theme" id="theme">
                             <option value="hope" {{ auth()->user()->theme == 'hope' ? 'selected' : '' }} >Hope</option>
+                            <option value="pixel" {{ auth()->user()->theme == 'pixel' ? 'selected' : '' }} >Pixel</option>
+                            <option value="studio" {{ auth()->user()->theme == 'studio' ? 'selected' : '' }} >Studio</option>
                         </select>
                         <div class="invalid-feedback">{{ $errors->first('theme') }}</div>
                     </div>
