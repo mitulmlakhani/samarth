@@ -49,7 +49,7 @@
                     <div class="main-menu h-100">
                         <nav class="navbar h-100 navbar-expand-lg">
                             <!-- Logo Area  -->
-                            <a class="navbar-brand" href="index.html"><img src="{{ $user->avatar_url }}" alt="Logo"></a>
+                            <a class="navbar-brand" href="{{ url()->current() }}"><img src="{{ $user->avatar_url }}" alt="{{ $user->name }}" style="width:146px; height:37px;"></a>
 
                             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#studioMenu" aria-controls="studioMenu" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars"></i> Menu</button>
 
@@ -57,7 +57,7 @@
                                 <!-- Menu Area Start  -->
                                 <ul class="navbar-nav ml-auto">
                                     <li class="nav-item active">
-                                        <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                                        <a class="nav-link" href="{{ url()->current() }}">Home <span class="sr-only">(current)</span></a>
                                     </li>
                                     
                                     <li class="nav-item">
