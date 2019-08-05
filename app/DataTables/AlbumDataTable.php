@@ -20,7 +20,7 @@ class AlbumDataTable extends DataTable
                 return '<a class="btn btn-sm btn-danger" onclick="return confirm(\'Are you Sure ? Album will be deleted !\')" href="'. route('admin.album.delete', $album->id) .'"><i class="fa fa-trash" aria-hidden="true"></i></a>';
             })
             ->editColumn('thumb_image', function($album) {
-                return '<a target="_blank" href="'.$album->thumb_image.'"><img src="'.$album->thumb_image.'" height="30"></a>';
+                return '<a target="_blank" href="'.$album->thumb_image.'"><img src="'.$album->thumb_image.'" height="125"></a>';
             })
             ->rawColumns(['thumb_image', 'action']);
     }
