@@ -28,3 +28,10 @@ Route::namespace('Admin\Api')->group(function(){
 
     });
 });
+
+Route::namespace('Studio\Api')->prefix('studio')->group(function() {
+    Route::post('login', 'AuthController@login');
+    Route::middleware(['auth:studio_api', 'studio_validity'])->group(function(){
+        Route::post('album/create', 'AlbumController@create');
+    });
+});

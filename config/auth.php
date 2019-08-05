@@ -51,6 +51,12 @@ return [
             'provider' => 'admins',
             'hash' => false,
         ],
+
+        'studio_api' => [
+            'driver' => 'token',
+            'provider' => 'users',
+            'hash' => true,
+        ]
     ],
 
     /*
