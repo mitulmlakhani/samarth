@@ -30,7 +30,7 @@ class StudioController extends Controller
     }
 
     public function edit(User $user) {
-        return view('admin.studio.edit')->with(['id' => $user->id, 'name' => $user->name, 'email' => $user->email, 'mobile' => $user->mobile]);
+        return view('admin.studio.edit')->with(['id' => $user->id, 'name' => $user->name, 'email' => $user->email, 'mobile' => $user->mobile, 'validity' => $user->membership_till]);
     }
 
     public function update(StudioRequest $request, User $user){
@@ -38,6 +38,7 @@ class StudioController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'mobile' => $request->mobile,
+            'membership_till' => $request->validity,
         ]);
 
         return redirect()->route('admin.studios')->with('success', 'Studio created successfully.');

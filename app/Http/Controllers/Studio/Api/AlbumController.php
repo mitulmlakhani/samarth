@@ -25,6 +25,9 @@ class AlbumController extends BaseApiController
         sendSms(auth()->user()->mobile, $msg);
         $request->user()->album_created++;
         $request->user()->save();
-        return Self::sendResponse([], 'New Album Created Successfully');    
+        return Self::sendResponse([
+            'album_credit' => $request->user()->album_credit,
+            'album_created' => $request->user()->album_created,
+        ], 'New Album Created Successfully');    
     }
 }

@@ -16,11 +16,22 @@ class StudioDataTable extends DataTable
     public function dataTable($query)
     {
         return datatables($query)
+            ->editColumn('membership_till', function($user) {
+                $diff = (strtotime($user->membership_till) - strtotime(date('Y-m-d')))/60/60/24;
+                if ($diff < 0) {
+                    return '<label class="badge badge-danger">'.$user->membership_till.'</label>';
+                } elseif ($diff < date('t')) {
+                    return '<label class="badge badge-warning">'.$user->membership_till.'</label>';
+                } else {
+                    return '<label class="badge badge-success">'.$user->membership_till.'</label>';
+                }
+            })
             ->addColumn('action', function($user) {
                 return '<a class="btn btn-sm btn-primary" href="'. route('admin.studio.login', $user->id) .'" target="_blank"><i class="fa fa-sign-in" aria-hidden="true"></i></a>
                         <a class="btn btn-sm btn-primary" href="'. route('admin.studio.edit', $user->id) .'"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                         <a class="btn btn-sm btn-danger" onclick="return confirm(\'Are you Sure ? Studio will be deleted !\')" href="'. route('admin.studio.delete', $user->id) .'"><i class="fa fa-trash" aria-hidden="true"></i></a>';
-            });
+            })
+            ->rawColumns(['membership_till', 'action']);
     }
 
     /**
@@ -31,7 +42,7 @@ class StudioDataTable extends DataTable
      */
     public function query(User $model)
     {
-        return $model->newQuery()->select('id', 'name', 'mobile','email', 'created_at');
+        return $model->newQuery()->select('id', 'name', 'mobile','email', 'album_credit', 'album_created','membership_till','created_at');
     }
 
     /**
@@ -60,6 +71,9 @@ class StudioDataTable extends DataTable
             'name',
             'mobile',
             'email',
+            'album_credit', 
+            'album_created',
+            'membership_till',
             'created_at',
         ];
     }
