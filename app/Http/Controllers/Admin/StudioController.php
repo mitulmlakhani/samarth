@@ -41,7 +41,12 @@ class StudioController extends Controller
             'membership_till' => $request->validity,
         ]);
 
-        return redirect()->route('admin.studios')->with('success', 'Studio created successfully.');
+        if($request->album_credit) {
+            $user->album_credit = $user->album_credit+$request->album_credit;
+            $user->save();
+        }
+
+        return redirect()->route('admin.studios')->with('success', 'Studio updated successfully.');
     }
 
     public function delete(User $user) {

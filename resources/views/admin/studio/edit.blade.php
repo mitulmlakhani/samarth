@@ -35,6 +35,11 @@
                         <input type="date" class="form-control {{ $errors->has('validity') ? 'is-invalid' : '' }}" id="validity" name="validity" value="{{ old('validity') ?: $validity }}">
                         <div class="invalid-feedback">{{ $errors->first('validity') }}</div>
                     </div>
+                    <div class="form-group">
+                        <label for="album_credit">Add Album Credit</label>
+                        <input type="number" class="form-control {{ $errors->has('album_credit') ? 'is-invalid' : '' }}" id="album_credit" name="album_credit" value="{{ old('album_credit') ?: 0 }}">
+                        <div class="invalid-feedback">{{ $errors->first('album_credit') }}</div>
+                    </div>
 
                     <button type="submit" class="btn btn-primary">Update</button>
                 </form>
