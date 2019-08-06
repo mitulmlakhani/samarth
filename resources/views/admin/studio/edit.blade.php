@@ -26,9 +26,14 @@
                         <div class="invalid-feedback">{{ $errors->first('mobile') }}</div>
                     </div>
                     <div class="form-group">
-                        <label for="email">Email address</label>
+                        <label for="validity">Email address</label>
                         <input type="email" class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" id="email" name="email" value="{{ old('email') ?: $email }}" placeholder="Enter email">
                         <div class="invalid-feedback">{{ $errors->first('email') }}</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="validity">Membership Till</label>
+                        <input type="date" class="form-control {{ $errors->has('validity') ? 'is-invalid' : '' }}" id="validity" name="validity" value="{{ old('validity') ?: $validity }}">
+                        <div class="invalid-feedback">{{ $errors->first('validity') }}</div>
                     </div>
 
                     <button type="submit" class="btn btn-primary">Update</button>
