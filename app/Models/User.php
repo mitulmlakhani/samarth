@@ -77,4 +77,8 @@ class User extends Authenticatable
     public function GetAvatarUrlAttribute() {
         return url('storage/'. ($this->avatar ?: 'user_default.png'));
     }
+
+    public function membershipValidity(){
+        return (strtotime($this->membership_till) - strtotime(date('Y-m-d')))/60/60/24;
+    }
 }

@@ -28,6 +28,37 @@
           <div class="col-lg-3 col-6">
             <div class="small-box bg-info">
               <div class="inner">
+                <h3>{{ (auth()->user()->album_credit-auth()->user()->album_created) }}</h3>
+
+                <p>Total Albums Credit</p>
+              </div>
+              <div class="icon">
+                <i class="fa fa-credit-card-alt"></i>
+              </div>
+              <a href="{{ route('studio.albums') }}" class="small-box-footer">More info <i
+                  class="fa fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          
+          <div class="col-lg-3 col-6">
+            <div class="small-box bg-{{ auth()->user()->membershipValidity() < 0 ? 'danger' : (auth()->user()->membershipValidity() < date('t') ? 'warning' : 'info')  }}">
+              <div class="inner">
+                <h3></h3>
+                <h3>{{ auth()->user()->membershipValidity() }}</h3>
+                <p>Membership Validity (Days)</p>
+              </div>
+              <div class="icon">
+                <i class="fa fa-user"></i>
+              </div>
+              <a href="{{ route('studio.albums') }}" class="small-box-footer">More info <i
+                  class="fa fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="row">  
+          <div class="col-lg-3 col-6">
+            <div class="small-box bg-info">
+              <div class="inner">
                 <h3>{{ $banners }}</h3>
 
                 <p>Total Banners</p>

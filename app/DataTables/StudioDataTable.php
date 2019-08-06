@@ -17,7 +17,7 @@ class StudioDataTable extends DataTable
     {
         return datatables($query)
             ->editColumn('membership_till', function($user) {
-                $diff = (strtotime($user->membership_till) - strtotime(date('Y-m-d')))/60/60/24;
+                $diff = $user->membershipValidity();
                 if ($diff < 0) {
                     return '<label class="badge badge-danger">'.$user->membership_till.'</label>';
                 } elseif ($diff < date('t')) {
