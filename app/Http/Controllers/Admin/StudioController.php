@@ -24,6 +24,7 @@ class StudioController extends Controller
             'email' => $request->email,
             'mobile' => $request->mobile,
             'password' => bcrypt($request->mobile),
+            'membership_till' => date('Y-m-d', strtotime('+1 year'))
         ]);
 
         return redirect()->route('admin.studios')->with('success', 'New studio created successfully.');
