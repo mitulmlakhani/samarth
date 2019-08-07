@@ -46,6 +46,15 @@
       </li>
 
       <li class="nav-item">
+        <a href="{{ route('admin.password.change') }}" class="nav-link">
+          <i class="nav-icon fa fa-key"></i>
+          <p>
+            Change Password
+          </p>
+        </a>
+      </li>
+
+      <li class="nav-item">
         <a href="#" class="nav-link"
           onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
           <i class="nav-icon fa fa-sign-out"></i>

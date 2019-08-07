@@ -29,6 +29,9 @@ Route::prefix('admin')->group(function(){
                 return view('admin.home')->with(['total_studios' => \App\Models\User::count(), 'total_ambums' => \App\Models\Album::count()]);
             });
 
+            Route::get('password/change', 'ProfileController@showChangePassword')->name('admin.password.change');
+            Route::post('password/change', 'ProfileController@changePassword')->name('admin.password.save');
+
             Route::prefix('albums')->group(function() {
                 Route::get('', 'AlbumController@index')->name('admin.albums');
                 Route::get('delete/{album}', 'AlbumController@delete')->name('admin.album.delete');
