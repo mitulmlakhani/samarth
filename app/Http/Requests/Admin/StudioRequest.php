@@ -23,12 +23,16 @@ class StudioRequest extends FormRequest
      */
     public function rules()
     {
-        return [
+        $update = [];
+        if($this->isMethod('PUT')) {
+            $update['validity'] = 'required|after:today';
+        }
+
+        return array_merge([
             'name' => 'required',
             'mobile' => 'required|digits:10|unique:users,mobile'.($this->isMethod('PUT') ? ','.$this->route('user')->id : ''),
             'email' => 'required|email|unique:users,email'.($this->isMethod('PUT') ? ','.$this->route('user')->id : ''),
-            'validity' => 'required|after:today',
             'album_credit' => 'nullable|integer|min:0'
-        ];
+        ], $update);
     }
 }
