@@ -27,7 +27,7 @@ class ProfileRequest extends FormRequest
             'name' => 'required',
             'mobile' => 'required|unique:users,mobile,'.auth()->user()->id,
             'email' => 'required|unique:users,email,'.auth()->user()->id,
-            'website_username' => 'required|alpha_dash|unique:users,website_username,'.auth()->user()->id,
+            'website_username' => 'required|regex:/^\S*$/u|unique:users,website_username,'.auth()->user()->id,
             'address' => 'required',
             'location' => 'required',
             'avatar' => 'nullable|mimes:jpeg,jpg,png',
