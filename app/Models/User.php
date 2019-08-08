@@ -30,6 +30,9 @@ class User extends Authenticatable
         'instagram_link',
         'pinrest_link',
         'website',
+        'membership_till',
+        'album_credit',
+        'album_created'
     ];
 
     /**
