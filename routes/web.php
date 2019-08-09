@@ -62,6 +62,7 @@ Route::get('/', function () {
 Route::prefix('studio')->group(function() {
     Auth::routes();
     Route::get('api/getstudio/{code}', 'Api\AlbumController@get');
+    Route::get('api/getstudio/{album}/{code}', 'Api\AlbumController@getAlbumStudio');
     Route::namespace('Studio')->group(function() {
 
         Route::middleware('auth:web')->group(function() {
