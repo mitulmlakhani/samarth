@@ -13,8 +13,8 @@ class AuthController extends BaseApiController
         $user = User::where('mobile', $request->mobile)->first();
         if ($user) {
             if(\Hash::check($request->password, $user->password)) {
-                $token = $this->generateToken($user);
-                
+                $token = $user->token ?: $this->generateToken($user);
+
                 return Self::sendResponse([
                     'name' => $user->name,
                     'email' => $user->email,
@@ -28,7 +28,7 @@ class AuthController extends BaseApiController
                 ], 'Login Successfull');
             }
         }
-        
+
         return Self::sendError(new \StdClass(), 'Invalid username and password.', 400);
     }
 
