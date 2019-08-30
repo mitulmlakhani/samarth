@@ -1,6 +1,6 @@
 <?php
 
-namespace App\DataTables;
+namespace App\DataTables\Distributor;
 
 use App\Models\User;
 use Yajra\DataTables\Services\DataTable;
@@ -27,9 +27,9 @@ class StudioDataTable extends DataTable
                 }
             })
             ->addColumn('action', function($user) {
-                return '<a class="btn btn-sm btn-primary" href="'. route('admin.studio.login', $user->id) .'" target="_blank"><i class="fa fa-sign-in" aria-hidden="true"></i></a>
-                        <a class="btn btn-sm btn-primary" href="'. route('admin.studio.edit', $user->id) .'"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                        <a class="btn btn-sm btn-danger" onclick="return confirm(\'Are you Sure ? Studio will be deleted !\')" href="'. route('admin.studio.delete', $user->id) .'"><i class="fa fa-trash" aria-hidden="true"></i></a>';
+                return '<a class="btn btn-sm btn-primary" href="'. route('distributor.studio.login', $user->id) .'" target="_blank"><i class="fa fa-sign-in" aria-hidden="true"></i></a>
+                        <a class="btn btn-sm btn-primary" href="'. route('distributor.studio.edit', $user->id) .'"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                        <a class="btn btn-sm btn-danger" onclick="return confirm(\'Are you Sure ? Studio will be deleted !\')" href="'. route('distributor.studio.delete', $user->id) .'"><i class="fa fa-trash" aria-hidden="true"></i></a>';
             })
             ->rawColumns(['membership_till', 'action']);
     }
@@ -42,7 +42,7 @@ class StudioDataTable extends DataTable
      */
     public function query(User $model)
     {
-        return $model->newQuery()->join('distributors', 'distributors.id', '=', 'users.distributor_id')->select('users.id', 'users.name', 'distributors.name as distributor', 'users.mobile', 'users.email', 'users.album_credit', 'users.album_created', 'users.membership_till', 'users.created_at');
+        return $model->newQuery()->where('distributor_id', auth()->user()->id)->select('id', 'name', 'mobile','email', 'album_credit', 'album_created','membership_till','created_at');
     }
 
     /**
@@ -68,11 +68,6 @@ class StudioDataTable extends DataTable
     {
         return [
             'id',
-            [
-                'name' => 'distributors.name',
-                'title' => 'Distributor',
-                'data' => 'distributor',
-            ],
             'name',
             'mobile',
             'email',

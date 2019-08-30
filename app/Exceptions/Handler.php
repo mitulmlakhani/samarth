@@ -106,6 +106,8 @@ class Handler extends ExceptionHandler
 		} else {
             if($request->is('admin*')){
                 return redirect()->guest('admin/login');
+            } elseif($request->is('distributor*')){
+                return redirect()->guest('distributor/login');
             }
             return redirect()->guest('studio/login');
 		}

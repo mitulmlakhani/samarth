@@ -1,25 +1,25 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Distributor;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
-use App\Models\Distributor;
-use App\Http\Requests\Admin\StudioRequest;
-use App\DataTables\StudioDataTable;
+use App\Http\Requests\Distributor\StudioRequest;
+use App\DataTables\Distributor\StudioDataTable;
 
 class StudioController extends Controller
 {
     public function index(StudioDataTable $datatable) {
-        return $datatable->render('admin.studio.list');
+        return $datatable->render('distributor.studio.list');
     }
 
     public function create () {
-        return view('admin.studio.create', ['distributors' => Distributor::all(['id', 'name'])]);
+        return view('distributor.studio.create');
     }
 
     public function store(StudioRequest $request) {
         $user = User::create([
+            'distributor_id' => $request->user()->id,
             'name' => $request->name,
             'email' => $request->email,
             'mobile' => $request->mobile,
@@ -27,11 +27,11 @@ class StudioController extends Controller
             'membership_till' => date('Y-m-d', strtotime('+1 year'))
         ]);
 
-        return redirect()->route('admin.studios')->with('success', 'New studio created successfully.');
+        return redirect()->route('distributor.studios')->with('success', 'New studio created successfully.');
     }
 
     public function edit(User $user) {
-        return view('admin.studio.edit')->with(['id' => $user->id, 'distributor_id' => $user->distributor_id, 'name' => $user->name, 'email' => $user->email, 'mobile' => $user->mobile, 'validity' => $user->membership_till, 'distributors' => Distributor::all(['id', 'name'])]);
+        return view('distributor.studio.edit')->with(['id' => $user->id, 'name' => $user->name, 'email' => $user->email, 'mobile' => $user->mobile, 'validity' => $user->membership_till]);
     }
 
     public function update(StudioRequest $request, User $user){
@@ -47,12 +47,12 @@ class StudioController extends Controller
             $user->save();
         }
 
-        return redirect()->route('admin.studios')->with('success', 'Studio updated successfully.');
+        return redirect()->route('distributor.studios')->with('success', 'Studio updated successfully.');
     }
 
     public function delete(User $user) {
         $user->delete();
 
-        return redirect()->route('admin.studios')->with('success', 'Studio deleted successfully.');
+        return redirect()->route('distributor.studios')->with('success', 'Studio deleted successfully.');
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Auth;
+namespace App\Http\Controllers\Distributor\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
@@ -22,7 +22,7 @@ class LoginController extends Controller
     use AuthenticatesUsers;
 
     protected function guard(){
-        return \Auth::guard('admin');
+        return \Auth::guard('distributor');
     }
 
     /**
@@ -30,17 +30,16 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/admin';
+    protected $redirectTo = '/distributor';
 
     public function showLoginForm()
     {
-        return view('admin.auth.login');
+        return view('distributor.auth.login');
     }
 
     public function login(Request $request)
     {
         $this->validateLogin($request);
-
         // If the class is using the ThrottlesLogins trait, we can automatically throttle
         // the login attempts for this application. We'll key this by the username and
         // the IP address of the client making these requests into this application.

@@ -27,7 +27,7 @@ Route::prefix('admin')->group(function(){
             Route::post('logout', 'Auth\LoginController@logout')->name('admin.logout');
             Route::get('/', function () {
                 return view('admin.home')->with(['total_studios' => \App\Models\User::count(), 'total_ambums' => \App\Models\Album::count()]);
-            });
+            })->name('admin.index');
 
             Route::get('password/change', 'ProfileController@showChangePassword')->name('admin.password.change');
             Route::post('password/change', 'ProfileController@changePassword')->name('admin.password.save');
@@ -36,7 +36,7 @@ Route::prefix('admin')->group(function(){
                 Route::get('', 'AlbumController@index')->name('admin.albums');
                 Route::get('delete/{album}', 'AlbumController@delete')->name('admin.album.delete');
             });
-            
+
             Route::prefix('studio')->group(function() {
                 Route::get('/', 'StudioController@index')->name('admin.studios');
                 Route::get('create', 'StudioController@create')->name('admin.studio.create');
@@ -50,6 +50,57 @@ Route::prefix('admin')->group(function(){
                     return redirect()->route('home');
                 })->name('admin.studio.login');
             });
+
+            Route::prefix('distributor')->group(function () {
+                Route::get('/', 'DistributorController@index')->name('admin.distributors');
+                Route::get('create', 'DistributorController@create')->name('admin.distributor.create');
+                Route::post('store', 'DistributorController@store')->name('admin.distributor.store');
+                Route::get('edit/{distributor}', 'DistributorController@edit')->name('admin.distributor.edit');
+                Route::put('update/{distributor}', 'DistributorController@update')->name('admin.distributor.update');
+                Route::get('delete/{distributor}', 'DistributorController@delete')->name('admin.distributor.delete');
+            });
+        });
+    });
+});
+
+Route::prefix('distributor')->group(function(){
+    Route::namespace('Distributor')->middleware(['guest:distributor'])->group(function() {
+        // Authentication Routes...
+        Route::get('login', 'Auth\LoginController@showLoginForm')->name('distributor.login');
+        Route::post('login', 'Auth\LoginController@login')->name('distributor.login.submit');
+
+        Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('distributor.password.email');
+        Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('distributor.password.request');
+        Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('distributor.password.update');
+        Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('distributor.password.reset');
+    });
+
+    Route::namespace('Distributor')->middleware('auth:distributor')->group(function() {
+        Route::post('logout', 'Auth\LoginController@logout')->name('distributor.logout');
+        Route::get('/', function () {
+            return view('distributor.home')->with(['total_studios' => \App\Models\User::count(), 'total_ambums' => \App\Models\Album::count()]);
+        })->name('distributor.index');
+
+        Route::get('password/change', 'ProfileController@showChangePassword')->name('distributor.password.change');
+        Route::post('password/change', 'ProfileController@changePassword')->name('distributor.password.save');
+
+        Route::prefix('albums')->group(function() {
+            Route::get('', 'AlbumController@index')->name('distributor.albums');
+            Route::get('delete/{album}', 'AlbumController@delete')->name('distributor.album.delete');
+        });
+
+        Route::prefix('studio')->group(function() {
+            Route::get('/', 'StudioController@index')->name('distributor.studios');
+            Route::get('create', 'StudioController@create')->name('distributor.studio.create');
+            Route::post('store', 'StudioController@store')->name('distributor.studio.store');
+            Route::get('edit/{user}', 'StudioController@edit')->name('distributor.studio.edit');
+            Route::put('update/{user}', 'StudioController@update')->name('distributor.studio.update');
+            Route::get('delete/{user}', 'StudioController@delete')->name('distributor.studio.delete');
+            Route::get('panel/{id}', function($id) {
+                $user = App\Models\User::find($id);
+                \Auth::guard('web')->login($user);
+                return redirect()->route('home');
+            })->name('distributor.studio.login');
         });
     });
 });
@@ -94,7 +145,7 @@ Route::prefix('studio')->group(function() {
                 Route::post('store', 'ServicesController@store')->name('studio.service.store');
                 Route::get('{service}/delete', 'ServicesController@delete')->name('studio.service.delete');
             });
-            
+
             // Team
             Route::prefix('team')->group(function() {
                 Route::get('/', 'TeamController@index')->name('studio.team');
@@ -102,7 +153,7 @@ Route::prefix('studio')->group(function() {
                 Route::post('store', 'TeamController@store')->name('studio.team.store');
                 Route::get('{team}/delete', 'TeamController@delete')->name('studio.team.delete');
             });
-            
+
             // Team
             Route::prefix('banner')->group(function() {
                 Route::get('/', 'BannerController@index')->name('studio.banners');
