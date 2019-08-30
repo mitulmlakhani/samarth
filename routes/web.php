@@ -26,7 +26,7 @@ Route::prefix('admin')->group(function(){
         Route::namespace('Admin')->group(function() {
             Route::post('logout', 'Auth\LoginController@logout')->name('admin.logout');
             Route::get('/', function () {
-                return view('admin.home')->with(['total_studios' => \App\Models\User::count(), 'total_ambums' => \App\Models\Album::count()]);
+                return view('admin.home')->with(['total_studios' => \App\Models\User::count(), 'total_ambums' => \App\Models\Album::count(), 'total_distributors' => \App\Models\Distributor::count()]);
             })->name('admin.index');
 
             Route::get('password/change', 'ProfileController@showChangePassword')->name('admin.password.change');

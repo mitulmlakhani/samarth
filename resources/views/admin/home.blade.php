@@ -9,13 +9,29 @@
       </div>
       <div class="card-body">
         <div class="row">
-          
+
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-warning">
+              <div class="inner">
+                <h3>{{ $total_distributors }}</h3>
+
+                <p>Total Distributors</p>
+              </div>
+              <div class="icon">
+                <i class="fa fa fa-users"></i>
+              </div>
+              <a href="{{ route('admin.distributors') }}" class="small-box-footer">More info <i
+                  class="fa fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+
           <div class="col-lg-3 col-6">
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
                 <h3>{{ $total_studios }}</h3>
-        
+
                 <p>Total Studios</p>
               </div>
               <div class="icon">
@@ -31,7 +47,7 @@
             <div class="small-box bg-success">
               <div class="inner">
                 <h3>{{ $total_ambums }}</h3>
-        
+
                 <p>Total Albums</p>
               </div>
               <div class="icon">
@@ -41,7 +57,7 @@
                   class="fa fa-arrow-circle-right"></i></a>
             </div>
           </div>
-          
+
         </div>
       </div>
     </div>

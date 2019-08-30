@@ -14,6 +14,30 @@
 
             <li class="nav-item has-treeview">
                 <a href="#" class="nav-link">
+                    <i class="nav-icon fa fa-users"></i>
+                    <p>
+                        Distributors
+                        <i class="right fa fa-angle-left"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview" style="display: none;">
+                    <li class="nav-item">
+                        <a href="{{ route('admin.distributor.create') }}" class="nav-link">
+                            <i class="fa fa-plus nav-icon"></i>
+                            <p>Create</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('admin.distributors') }}" class="nav-link">
+                            <i class="fa fa-circle nav-icon"></i>
+                            <p>List</p>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="nav-item has-treeview">
+                <a href="#" class="nav-link">
                     <i class="nav-icon fa fa-video-camera"></i>
                     <p>
                         Studios
@@ -29,30 +53,6 @@
                     </li>
                     <li class="nav-item">
                         <a href="{{ route('admin.studios') }}" class="nav-link">
-                            <i class="fa fa-circle nav-icon"></i>
-                            <p>List</p>
-                        </a>
-                    </li>
-                </ul>
-            </li>
-
-            <li class="nav-item has-treeview">
-                <a href="#" class="nav-link">
-                    <i class="nav-icon fa fa-video-camera"></i>
-                    <p>
-                        distributor
-                        <i class="right fa fa-angle-left"></i>
-                    </p>
-                </a>
-                <ul class="nav nav-treeview" style="display: none;">
-                    <li class="nav-item">
-                        <a href="{{ route('admin.distributor.create') }}" class="nav-link">
-                            <i class="fa fa-plus nav-icon"></i>
-                            <p>Create</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ route('admin.distributors') }}" class="nav-link">
                             <i class="fa fa-circle nav-icon"></i>
                             <p>List</p>
                         </a>

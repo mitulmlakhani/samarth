@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
-@section('page-title', 'Distribute List')
-@section('module', 'Studio')
+@section('page-title', 'Distributers List')
+@section('module', 'Distributers')
 
 @push('styles')
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.18/r-2.2.2/datatables.min.css" />
@@ -21,7 +21,7 @@
 
         <div class="card card-primary card-outline">
             <div class="card-header">
-                <h5 class="m-0">Distribute</h5>
+                <h5 class="m-0">Distributer</h5>
             </div>
             <div class="card-body">
                 {!! $dataTable->table() !!}
