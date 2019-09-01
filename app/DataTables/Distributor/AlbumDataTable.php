@@ -1,6 +1,6 @@
 <?php
 
-namespace App\DataTables;
+namespace App\DataTables\Distributor;
 
 use App\Models\Album;
 use Yajra\DataTables\Services\DataTable;
@@ -17,7 +17,7 @@ class AlbumDataTable extends DataTable
     {
         return datatables($query)
             ->addColumn('action', function($album) {
-                return '<a class="btn btn-sm btn-danger" onclick="return confirm(\'Are you Sure ? Album will be deleted !\')" href="'. route('admin.album.delete', $album->id) .'"><i class="fa fa-trash" aria-hidden="true"></i></a>';
+                return '<a class="btn btn-sm btn-danger" onclick="return confirm(\'Are you Sure ? Album will be deleted !\')" href="'. route('distributor.album.delete', $album->id) .'"><i class="fa fa-trash" aria-hidden="true"></i></a>';
             })
             ->editColumn('thumb_image', function($album) {
                 return '<a target="_blank" href="'.$album->thumb_image.'"><img src="'.$album->thumb_image.'" height="125"></a>';
@@ -33,7 +33,7 @@ class AlbumDataTable extends DataTable
      */
     public function query(Album $model)
     {
-        $query = $model->newQuery()->join('users', 'users.id', '=', 'albums.user_id')->join('distributors', 'distributors.id', '=', 'users.distributor_id')->select('albums.id', 'users.name', 'distributors.name as distributor', 'albums.remark', 'albums.mobile', 'albums.pin', 'albums.thumb_image', 'albums.created_at');
+        $query = $model->newQuery()->join('users', 'users.id', '=', 'albums.user_id')->where('users.distributor_id', auth()->user()->id)->select('albums.id', 'users.name', 'albums.remark', 'albums.mobile', 'albums.pin', 'albums.thumb_image', 'albums.created_at');
         if(isset($_GET['studioId']) && $_GET['studioId']){
             $query = $query->where('albums.user_id', $_GET['studioId']);
         }
@@ -63,11 +63,6 @@ class AlbumDataTable extends DataTable
     {
         return [
             'id',
-            [
-               'name' => 'distributors.name',
-               'title' => 'Distributor',
-               'data' => 'distributor',
-            ],
             [
                'name' => 'users.name',
                'title' => 'Studio',

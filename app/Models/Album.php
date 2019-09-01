@@ -19,6 +19,10 @@ class Album extends Model
         return $this->belongsTo('App\Models\User', 'user_id');
     }
 
+    public function distributor(){
+        return $this->hasOneThrough('App\Models\Distributor', 'App\Models\User');
+    }
+
     public function setAlbumUrlAttribute($value){
         return $this->attributes['album_url'] = substr_replace($value, 1, -1);
     }

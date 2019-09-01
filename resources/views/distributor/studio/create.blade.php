@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.distributor')
 
 @section('page-title', 'Create Studio')
 @section('module', 'Studio')
@@ -12,17 +12,8 @@
                 <h5 class="m-0">Create Studio</h5>
             </div>
             <div class="card-body">
-                <form method="post" action="{{ route('admin.studio.store') }}">
+                <form method="post" action="{{ route('distributor.studio.store') }}">
                     @csrf
-                    <div class="form-group">
-                        <label for="name">Select Distributor</label>
-                        <select class="form-control select2" name="distributor" id="distributor">
-                            @foreach($distributors as $distributor)
-                                <option value="{{ $distributor->id }}">{{ $distributor->name }}</option>
-                            @endforeach
-                        </select>
-                        <div class="invalid-feedback">{{ $errors->first('name') }}</div>
-                    </div>
                     <div class="form-group">
                         <label for="name">Name</label>
                         <input type="text" class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" name="name" value="{{ old('name') }}" id="name" placeholder="Enter name">
@@ -46,11 +37,3 @@
     </div>
 </div>
 @stop
-
-@push('script')
-<script>
-    $(document).ready(function(){
-        $(".select2").select2();
-    });
-</script>
-@endpush

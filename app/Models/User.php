@@ -17,6 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
+        'distributor_id',
         'name',
         'email',
         'password',
@@ -25,7 +26,7 @@ class User extends Authenticatable
         'location',
         'website_username',
         'avatar',
-        'theme', 
+        'theme',
         'facebook_link',
         'instagram_link',
         'pinrest_link',
@@ -54,22 +55,26 @@ class User extends Authenticatable
         'avatar_url'
     ];
 
+    public function distributor(){
+        return $this->belongsTo('App\Models\Distributor');
+    }
+
     public function albums(){
         return $this->hasMany('App\Models\Album');
     }
-    
+
     public function banners(){
         return $this->hasMany('App\Models\Banner');
     }
-    
+
     public function services(){
         return $this->hasMany('App\Models\Service');
     }
-    
+
     public function teams(){
         return $this->hasMany('App\Models\Team');
     }
-    
+
     public function portfolios(){
         return $this->hasMany('App\Models\Portfolio');
     }

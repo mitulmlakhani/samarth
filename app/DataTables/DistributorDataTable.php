@@ -2,10 +2,10 @@
 
 namespace App\DataTables;
 
-use App\Models\User;
+use App\Models\Distributor;
 use Yajra\DataTables\Services\DataTable;
 
-class StudioDataTable extends DataTable
+class DistributorDataTable extends DataTable
 {
     /**
      * Build DataTable class.
@@ -16,22 +16,21 @@ class StudioDataTable extends DataTable
     public function dataTable($query)
     {
         return datatables($query)
-            ->addColumn('action', function($user) {
-                return '<a class="btn btn-sm btn-primary" href="'. route('admin.studio.login', $user->id) .'" target="_blank"><i class="fa fa-sign-in" aria-hidden="true"></i></a>
-                        <a class="btn btn-sm btn-primary" href="'. route('admin.studio.edit', $user->id) .'"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                        <a class="btn btn-sm btn-danger" onclick="return confirm(\'Are you Sure ? Studio will be deleted !\')" href="'. route('admin.studio.delete', $user->id) .'"><i class="fa fa-trash" aria-hidden="true"></i></a>';
+            ->addColumn('action', function($distributor) {
+                return '<a class="btn btn-sm btn-primary" href="'. route('admin.distributor.edit', $distributor->id) .'"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                        <a class="btn btn-sm btn-danger" onclick="return confirm(\'Are you Sure ? Distributor will be deleted !\')" href="'. route('admin.distributor.delete', $distributor->id) .'"><i class="fa fa-trash" aria-hidden="true"></i></a>';
             });
-    }
+        }
 
     /**
      * Get query source of dataTable.
      *
-     * @param \App\User $model
+     * @param \App\Distributor $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(User $model)
+    public function query(Distributor $model)
     {
-        return $model->newQuery()->join('distributors', 'distributors.id', '=', 'users.distributor_id')->select('users.id', 'users.name', 'distributors.name as distributor', 'users.mobile', 'users.email', 'users.created_at');
+        return $model->newQuery()->select('distributors.id', 'distributors.name', 'distributors.mobile', 'distributors.email', 'distributors.created_at');
     }
 
     /**
@@ -57,11 +56,6 @@ class StudioDataTable extends DataTable
     {
         return [
             'id',
-            [
-                'name' => 'distributors.name',
-                'title' => 'Distributor',
-                'data' => 'distributor',
-            ],
             'name',
             'mobile',
             'email',
@@ -76,6 +70,6 @@ class StudioDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'Studio_' . date('YmdHis');
+        return 'Distributor_' . date('YmdHis');
     }
 }
