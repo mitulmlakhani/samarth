@@ -71,7 +71,7 @@
 
             <li class="nav-item">
                 <a href="{{ route('admin.album.export') }}" class="nav-link">
-                    <i class="nav-icon fa fa-book"></i>
+                    <i class="nav-icon fa fa-file-pdf-o"></i>
                     <p>
                         Export Album PDF
                     </p>

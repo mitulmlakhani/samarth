@@ -12,13 +12,13 @@
                 <h5 class="m-0">Export Album PDF</h5>
             </div>
             <div class="card-body">
-            <form method="post" action="{{ route('admin.album.exportsave') }}">
+            <form target="_blank" method="post" action="{{ route('admin.album.exportsave') }}">
                     @csrf
                     <div class="form-group">
                         <label for="name">Select Albums</label>
                         <select class="form-control select2" name="albums[]" id="albums" multiple>
                             @foreach($albums as $album)
-                        <option value="{{ $album->pin }}">{{ $album->remark }} - {{ $album->mobile }} ({{ $album->studio->name }})</option>
+                        <option value="{{ $album->pin }}">{{ $album->remark }} - {{ $album->mobile }}  {{ $album->studio ? '('.$album->studio->name.')' : '' }}</option>
                             @endforeach
                         </select>
                         <div class="invalid-feedback">{{ $errors->first('name') }}</div>

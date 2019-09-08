@@ -1,22 +1,25 @@
 <html>
-<body>
-    @foreach ($codes as $code)
-        <table style="height: 100%" width="100%">
+<body style="text-align:center;">
+    <table>
             <tbody>
+            @foreach ($codes as $code)
                 <tr style="height: 33.4px;">
-                    <td style="width: 100%; height: 100%; text-align: center;">
+                    <td style="text-align: center;">
                         <h1>
                             <strong><span style="color: #ff0000;">E-Book</span></strong>
                         </h1>
+                        <br>
                         <h2>
                             <span style="color: #000000;">You May Download in English The Photo Book
                                 Album Mobile.app</span>
                         </h2>
+                        <br>
                         <p>
                             <span style="color: #000000;"><span style="color: #ff0000;"><img
-                                        src="http://localhost:8000/assets/img/play_app_store.jpg"
+                            src="{{ asset('assets/img/play_app_store.jpg') }}"
                                         alt="" /></span></span>
                         </p>
+                        <br>
                         <h2>
                             <span style="color: #000000;">You May View it in Album English The Photo Book
                                 app With Album Key&nbsp;</span>
@@ -33,9 +36,8 @@
                         </p>
                     </td>
                 </tr>
+                @endforeach
             </tbody>
         </table>
-        <div style="page-break-before: always;"></div>
-    @endforeach
 </body>
 </html>

@@ -23,13 +23,13 @@ class AlbumController extends Controller
     }
 
     public function showExportForm(){
-        $albums = Album::with('studio:id,name')->get();
+        $albums = Album::select('id', 'user_id','pin', 'remark')->with('studio:id,name')->get();
         return view('admin.album.export')->with('albums', $albums);
     }
 
     public function exportAlbumPDF(Request $request){
-        $pdf = \PDF::setPaper('a4', 'landscape')->loadView('admin.album.album_pdf', ['codes' => $request->albums]);
-        return $pdf->download('album_pdf.pdf');
+        $pdf = \PDF::setPaper('a4', 'portrait')->loadView('admin.album.album_pdf', ['codes' => $request->albums]);
+        return $pdf->download('album_pdf'.date('Y-m-d_h:i:s').'.pdf');
     }
 
     public function delete(Album $album){
