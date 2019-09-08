@@ -22,6 +22,16 @@ class AlbumController extends Controller
         return redirect()->route('admin.albums')->with('success', 'Album studio SMS sent successfully.');
     }
 
+    public function showExportForm(){
+        $albums = Album::with('studio:id,name')->get();
+        return view('admin.album.export')->with('albums', $albums);
+    }
+
+    public function exportAlbumPDF(Request $request){
+        $pdf = \PDF::setPaper('a4', 'landscape')->loadView('admin.album.album_pdf', ['codes' => $request->albums]);
+        return $pdf->download('album_pdf.pdf');
+    }
+
     public function delete(Album $album){
         $album->delete();
 

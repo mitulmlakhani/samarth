@@ -70,6 +70,15 @@
             </li>
 
             <li class="nav-item">
+                <a href="{{ route('admin.album.export') }}" class="nav-link">
+                    <i class="nav-icon fa fa-book"></i>
+                    <p>
+                        Export Album PDF
+                    </p>
+                </a>
+            </li>
+
+            <li class="nav-item">
                 <a href="{{ route('admin.password.change') }}" class="nav-link">
                     <i class="nav-icon fa fa-key"></i>
                     <p>

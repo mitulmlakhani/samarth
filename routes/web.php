@@ -36,6 +36,8 @@ Route::prefix('admin')->group(function(){
                 Route::get('', 'AlbumController@index')->name('admin.albums');
                 Route::get('delete/{album}', 'AlbumController@delete')->name('admin.album.delete');
                 Route::get('sendsms/{album}', 'AlbumController@sendAlbumSMS')->name('admin.album.sms');
+                Route::get('export', 'AlbumController@showExportForm')->name('admin.album.export');
+                Route::post('export', 'AlbumController@exportAlbumPDF')->name('admin.album.exportsave');
             });
 
             Route::prefix('studio')->group(function() {
