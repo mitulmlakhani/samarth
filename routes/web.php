@@ -35,6 +35,7 @@ Route::prefix('admin')->group(function(){
             Route::prefix('albums')->group(function() {
                 Route::get('', 'AlbumController@index')->name('admin.albums');
                 Route::get('delete/{album}', 'AlbumController@delete')->name('admin.album.delete');
+                Route::get('sendsms/{album}', 'AlbumController@sendAlbumSMS')->name('admin.album.sms');
             });
 
             Route::prefix('studio')->group(function() {

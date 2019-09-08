@@ -17,7 +17,8 @@ class AlbumDataTable extends DataTable
     {
         return datatables($query)
             ->addColumn('action', function($album) {
-                return '<a class="btn btn-sm btn-danger" onclick="return confirm(\'Are you Sure ? Album will be deleted !\')" href="'. route('admin.album.delete', $album->id) .'"><i class="fa fa-trash" aria-hidden="true"></i></a>';
+                return '<a class="btn btn-sm btn-danger" onclick="return confirm(\'Are you Sure ? Album will be deleted !\')" href="'. route('admin.album.delete', $album->id) .'"><i class="fa fa-trash" aria-hidden="true"></i></a>'
+                    .'<a class="btn btn-sm btn-success ml-1" href="'. route('admin.album.sms', $album->id) . '"><i class="fa fa-envelope" aria-hidden="true"></i></a>';
             })
             ->editColumn('thumb_image', function($album) {
                 return '<a target="_blank" href="'.$album->thumb_image.'"><img src="'.$album->thumb_image.'" height="125"></a>';
