@@ -32,7 +32,7 @@ class StudioDataTable extends DataTable
      */
     public function query(User $model)
     {
-        return $model->newQuery()->where('distributor_id', auth()->user()->id)->select('id', 'name', 'mobile','email', 'album_credit', 'album_created','membership_till','created_at');
+        return $model->newQuery()->where('distributor_id', auth()->user()->id)->select('id', 'name', 'mobile','email', 'created_at');
     }
 
     /**
