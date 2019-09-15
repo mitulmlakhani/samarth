@@ -23,6 +23,11 @@ class RedirectIfAuthenticated
                     return redirect()->route('admin.index');
                 }
                 break;
+            case 'distributor' :
+                if (Auth::guard($guard)->check()) {
+                    return redirect()->route('distributor.index');
+                }
+                break;
             default:
                 if (Auth::guard($guard)->check()) {
                     return redirect()->route('home');

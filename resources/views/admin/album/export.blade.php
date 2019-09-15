@@ -18,7 +18,7 @@
                         <label for="name">Select Albums</label>
                         <select class="form-control select2" name="albums[]" id="albums" multiple>
                             @foreach($albums as $album)
-                        <option value="{{ $album->pin }}">{{ $album->remark }} - {{ $album->mobile }}  {{ $album->studio ? '('.$album->studio->name.')' : '' }}</option>
+                        <option value="{{ $album->pin.'::'.$album->remark }}">{{ $album->remark }} - {{ $album->mobile }}  {{ $album->studio ? '('.$album->studio->name.')' : '' }}</option>
                             @endforeach
                         </select>
                         <div class="invalid-feedback">{{ $errors->first('name') }}</div>

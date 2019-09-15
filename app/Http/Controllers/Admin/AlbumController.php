@@ -28,7 +28,7 @@ class AlbumController extends Controller
     }
 
     public function exportAlbumPDF(Request $request){
-        $pdf = \PDF::setPaper('a4', 'portrait')->loadView('admin.album.album_pdf', ['codes' => $request->albums]);
+        $pdf = \PDF::setPaper(array(0, 0, 864.00, 1440.00), 'landscape')->loadView('admin.album.album_pdf', ['codes' => $request->albums]);
         return $pdf->download('album_pdf'.date('Y-m-d_h:i:s').'.pdf');
     }
 
