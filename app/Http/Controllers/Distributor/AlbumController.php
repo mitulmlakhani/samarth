@@ -10,7 +10,7 @@ use App\Models\Album;
 class AlbumController extends Controller
 {
     public function index(AlbumDataTable $datatable) {
-        $studios = User::all(['id', 'name', 'mobile']);
+        $studios = User::where('distributor_id', auth()->user()->id)->get(['id', 'name', 'mobile']);
         return $datatable->render('distributor.album.index', ['studios' => $studios]);
     }
 
